@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+
+{% include 'PilotNewslineBundle::menu.html.twig' %}
+
+    <h1>Выбрана новость</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Заголовок</th>
+                <td>{{ entity.title }}</td>
+            </tr>
+            <tr>
+                <th>Содержимое</th>
+                <td>{{ entity.content }}</td>
+            </tr>
+            <tr>
+                <th>Дата создания</th>
+                <td>{{ entity.createdDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Последнее обновление</th>
+                <td>{{ entity.updatedDate|date('Y-m-d H:i:s') }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Авторы:</h3>
+    {% for author in authors %}
+        <div>
+            <a href="{{ path('author_show', { 'id': author.id }) }}">
+                {{ author.login }} ({{ author.name }} {{ author.surname }})
+        </div>
+    {% endfor %}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('news') }}">
+            Вернуться к списку
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('news_edit', { 'id': entity.id }) }}">
+            Редактировать
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

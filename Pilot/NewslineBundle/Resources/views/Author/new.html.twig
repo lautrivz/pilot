@@ -1,0 +1,19 @@
+{% use 'form_table_layout.html.twig' %}
+{% form_theme form _self %}
+
+{% block body -%}
+
+{% include 'PilotNewslineBundle::menu.html.twig' %}
+
+    <h1>Создание автора</h1>
+
+    {{ form(form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('author') }}">
+            Вернуться к списку
+        </a>
+    </li>
+</ul>
+{% endblock %}

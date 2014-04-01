@@ -1,0 +1,22 @@
+{% use 'form_table_layout.html.twig' %}
+{% form_theme form _self %}
+
+{% include 'PilotNewslineBundle::menu.html.twig' %}
+
+<h1>Добавление новости</h1>
+
+
+<form action="{{ path('news_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Создать новость</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('news') }}">
+            Назад к списку
+        </a>
+    </li>
+</ul>
